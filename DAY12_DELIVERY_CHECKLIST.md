@@ -210,9 +210,3 @@ https://github.com/your-username/day12-agent-deployment
 
 - Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 - Review [CODE_LAB.md](CODE_LAB.md)
-- Ask in office hours
-- Post in discussion forum
-
----
-
-**Good luck! **
