@@ -12,26 +12,26 @@ Railway
 
 ### Health Check
 ```bash
-curl https://your-agent.railway.app/health
+curl https://vinai-production.up.railway.app/health
 # Expected: {"status":"ok","uptime_seconds":...,"version":"1.0.0","environment":"production",...}
 ```
 
 ### Readiness Check
 ```bash
-curl https://your-agent.railway.app/ready
+curl https://vinai-production.up.railway.app/ready
 # Expected: {"ready":true,"in_flight_requests":0}
 ```
 
 ### Authentication Required (no key → 401)
 ```bash
-curl https://your-agent.railway.app/ask
+curl https://vinai-production.up.railway.app/ask
 # Expected: {"detail":"Missing API key. Include header: X-API-Key: <your-key>"}
 ```
 
 ### API Test (with authentication)
 ```bash
-curl -X POST https://your-agent.railway.app/ask \
-  -H "X-API-Key: YOUR_KEY" \
+curl -X POST https://vinai-production.up.railway.app/ask \
+  -H "X-API-Key: cognaig" \
   -H "Content-Type: application/json" \
   -d '{"user_id": "test", "question": "Hello"}'
 # Expected: {"answer":"..."}
@@ -40,8 +40,8 @@ curl -X POST https://your-agent.railway.app/ask \
 ### Rate Limiting Test (should return 429 after 10 req/min)
 ```bash
 for i in {1..15}; do
-  curl -s -X POST https://your-agent.railway.app/ask \
-    -H "X-API-Key: YOUR_KEY" \
+  curl -s -X POST https://vinai-production.up.railway.app/ask \
+    -H "X-API-Key: cognaig" \
     -H "Content-Type: application/json" \
     -d '{"user_id": "test", "question": "test '$i'"}' | python3 -m json.tool
   echo "---"
