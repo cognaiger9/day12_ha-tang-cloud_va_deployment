@@ -43,6 +43,9 @@ Kết hợp TẤT CẢ những gì đã học trong 1 project hoàn chỉnh.
 ## Chạy Local
 
 ```bash
+# 0. Navigate to lab directory (required — docker-compose context is parent dir)
+cd 06-lab-complete
+
 # 1. Setup
 cp .env.example .env
 
@@ -50,12 +53,12 @@ cp .env.example .env
 docker compose up
 
 # 3. Test
-curl http://localhost/health
+curl http://localhost:8000/health
 
 # 4. Lấy API key từ .env, test endpoint
 API_KEY=$(grep AGENT_API_KEY .env | cut -d= -f2)
 curl -H "X-API-Key: $API_KEY" \
-     -X POST http://localhost/ask \
+     -X POST http://localhost:8000/ask \
      -H "Content-Type: application/json" \
      -d '{"question": "What is deployment?"}'
 ```
